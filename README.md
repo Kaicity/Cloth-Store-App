@@ -1,4 +1,4 @@
 # Cloth-Store-App
-Ứng dụng bán quần áo đa nền tản Flutter
+<p>Clothes store application mobile Flutter </p>
 </br>
 ![Logo](https://i.ytimg.com/vi/fuP1DksE3Oc/maxresdefault.jpg)
