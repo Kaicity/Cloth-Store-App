@@ -1,0 +1,4 @@
+enum TypeOptionProduct {
+  SIZE,
+  COLOR
+}

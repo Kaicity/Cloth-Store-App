@@ -1,0 +1,4 @@
+enum ProductStatus {
+  ACTIVE,
+  COMINGSOON
+}
