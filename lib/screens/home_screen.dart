@@ -1,7 +1,9 @@
 import 'package:clothstore_mobile/constants.dart';
 import 'package:clothstore_mobile/widgets/categories.dart';
 import 'package:clothstore_mobile/widgets/home_slider.dart';
+import 'package:clothstore_mobile/widgets/product_card.dart';
 import 'package:clothstore_mobile/widgets/seach_field.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../bm-api/models/category_model_display.dart';
@@ -63,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
       id: "83r88hw-fw877322",
       code: 'P001',
       name: 'Áo sơ mi nam',
-      price: 25.99,
+      price: 269.000,
       description: 'Áo sơ mi nam kiểu dáng trẻ trung, phong cách.',
       image:
           'https://bizweb.dktcdn.net/thumb/1024x1024/100/472/913/products/8-1687161700963.png?v=1687161706960',
@@ -73,8 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Product(
       id: "83r88hw-9erufg9e8yf8",
       code: 'P001',
-      name: 'Áo thun',
-      price: 25.99,
+      name: 'Áo Sơ Mi IO',
+      price: 350.000,
       description: 'Áo thun theo phong cách độc lạ',
       image:
           'https://bizweb.dktcdn.net/100/472/913/products/6-1687162107163.png?v=1687162112210',
@@ -84,8 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Product(
       id: "f78efy938-fe8f87",
       code: 'P001',
-      name: 'Áo khoác nữ',
-      price: 25.99,
+      name: 'Áo Thun Nam',
+      price: 199.000,
       description: 'Áo sơ mi nữ kiểu dáng trẻ trung, phong cách.',
       image:
           'https://bizweb.dktcdn.net/thumb/1024x1024/100/472/913/products/4-1687014666814.png?v=1687014674297',
@@ -95,8 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Product(
       id: "80uf9refe8y-fe8fhge8",
       code: 'P001',
-      name: 'Chân váy',
-      price: 25.99,
+      name: 'Áo Khoác',
+      price: 499.000,
       description: 'Vẻ đẹp của phải nữ',
       image:
           'https://bizweb.dktcdn.net/thumb/1024x1024/100/472/913/products/windjacket-1688350870380-f93038e7-29b3-4406-92ca-94fd9f76f1f2.png?v=1691560753867',
@@ -164,44 +166,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                    ),
-                    itemCount: products.length,
-                    itemBuilder: (context, index) {
-                      return Stack(
-                        children: [
-                          Container(
-                            height: 250,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
-                              children: [
-                                Image(
-                                  image: NetworkImage(products[index].image),
-                                  width: 120,
-                                  height: 120,
-                                ),
-                                Text(
-                                  products[index].name,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-                    }),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                  ),
+                  itemCount: products.length,
+                  itemBuilder: (context, index) {
+                    return ProductCard(product: products[index]);
+                  },
+                ),
               ],
             ),
           ),
