@@ -34,7 +34,7 @@ class ProductDetailDescription extends StatelessWidget {
         ),
         Text(
           product.description,
-          style: const TextStyle(fontSize: 12),
+          style: const TextStyle(fontSize: 14),
         ),
       ],
     );
