@@ -18,18 +18,18 @@ class ProductDetailAppBar extends StatelessWidget {
             ),
             style: IconButton.styleFrom(
               backgroundColor: Colors.white,
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(12),
             ),
           ),
           const Spacer(),
           IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.share,
+              Icons.favorite_outline,
             ),
             style: IconButton.styleFrom(
               backgroundColor: Colors.white,
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(12),
             ),
           ),
           const SizedBox(
@@ -38,11 +38,24 @@ class ProductDetailAppBar extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.favorite_border,
+              Icons.share,
             ),
             style: IconButton.styleFrom(
               backgroundColor: Colors.white,
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(12),
+            ),
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.chat_bubble_outline_rounded,
+            ),
+            style: IconButton.styleFrom(
+              backgroundColor: Colors.white,
+              padding: const EdgeInsets.all(12),
             ),
           ),
         ],

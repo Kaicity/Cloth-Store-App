@@ -10,7 +10,9 @@ class Product {
   final String description;
   final String image;
   final String category;
+  final double rate;
   final List<Color> colors;
+  final List<String> sizes;
 
   Product({
     required this.id,
@@ -20,6 +22,8 @@ class Product {
     required this.description,
     required this.image,
     required this.category,
+    required this.rate,
     required this.colors,
+    required this.sizes
   });
 }

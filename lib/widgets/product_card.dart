@@ -25,7 +25,7 @@ class ProductCard extends StatelessWidget {
             height: 250,
             width: double.infinity,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20), color: Colors.white),
+                borderRadius: BorderRadius.circular(20), color: kcontentdcolor),
             child: Column(
               children: [
                 Image(
