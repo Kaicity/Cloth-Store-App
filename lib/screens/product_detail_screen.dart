@@ -1,5 +1,6 @@
 import 'package:clothstore_mobile/bm-api/models/product_model_display.dart';
 import 'package:clothstore_mobile/constants.dart';
+import 'package:clothstore_mobile/widgets/add_to_cart.dart';
 import 'package:clothstore_mobile/widgets/product_detail_appbar.dart';
 import 'package:clothstore_mobile/widgets/product_detail_desc.dart';
 import 'package:clothstore_mobile/widgets/product_detail_information.dart';
@@ -28,88 +29,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kcontentdcolor,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Container(
-          height: 80,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: Colors.black,
-          ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 15,
-          ),
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          if (currentNumber > 0) {
-                            currentNumber--;
-                          }
-                        });
-                      },
-                      iconSize: 18,
-                      icon: const Icon(Icons.remove),
-                      color: Colors.white,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      currentNumber.toString(),
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          currentNumber++;
-                        });
-                      },
-                      iconSize: 18,
-                      icon: const Icon(Icons.add),
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                height: 60,
-                width: 185,
-                decoration: BoxDecoration(
-                  color: kprimarycolor,
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                alignment: Alignment.center,
-                child: const Text(
-                  "Thêm vào giỏ hàng",
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-        ),
+      floatingActionButton: AddToCart(
+        currentNumber: currentNumber,
+        onAdd: () {
+          setState(() {
+            currentNumber++;
+          });
+        },
+        onRemove: () {
+          setState(() {
+            if (currentNumber > 0) {
+              currentNumber--;
+            }
+          });
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
@@ -161,7 +94,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                   color: Colors.white,
                 ),
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.only(
+                    left: 20, top: 20, right: 20, bottom: 100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

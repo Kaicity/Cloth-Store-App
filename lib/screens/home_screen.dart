@@ -3,7 +3,6 @@ import 'package:clothstore_mobile/widgets/categories.dart';
 import 'package:clothstore_mobile/widgets/home_slider.dart';
 import 'package:clothstore_mobile/widgets/product_card.dart';
 import 'package:clothstore_mobile/widgets/seach_field.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../bm-api/models/category_model_display.dart';
