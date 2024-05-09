@@ -1,6 +1,7 @@
 import 'package:clothstore_mobile/constants.dart';
 import 'package:clothstore_mobile/screens/cart_screen.dart';
 import 'package:clothstore_mobile/screens/home_screen.dart';
+import 'package:clothstore_mobile/screens/user_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -16,8 +17,8 @@ class _MainScreenState extends State<MainScreen> {
     Scaffold(),
     Scaffold(),
     HomeScreen(),
-    CartScreen(),
     Scaffold(),
+    UserScreen(),
   ];
 
   @override
@@ -73,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                   currentTab = 3;
                 },
               ),
-              icon: const Icon(Icons.shopping_cart_outlined),
+              icon: const Icon(Icons.notifications_none_outlined),
               color: currentTab == 3 ? kprimarycolor : Colors.grey.shade400,
             ),
             IconButton(

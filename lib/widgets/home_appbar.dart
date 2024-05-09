@@ -1,3 +1,4 @@
+import 'package:clothstore_mobile/screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -20,8 +21,15 @@ class HomeAppBar extends StatelessWidget {
           iconSize: 30,
         ),
         IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.notifications_outlined),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CartScreen(),
+              ),
+            );
+          },
+          icon: const Icon(Icons.shopping_cart_outlined),
           style: IconButton.styleFrom(
             backgroundColor: kcontentdcolor,
             padding: const EdgeInsets.all(15),

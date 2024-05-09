@@ -1,8 +1,8 @@
 import 'dart:core';
 
 import 'package:clothstore_mobile/constants.dart';
-import 'package:clothstore_mobile/screens/home_screen.dart';
 import 'package:clothstore_mobile/screens/main_screen.dart';
+import 'package:clothstore_mobile/widgets/product_item_cart.dart';
 import 'package:flutter/material.dart';
 
 import '../bm-api/models/cart_model_display.dart';
@@ -47,21 +47,6 @@ class _CartScreenState extends State<CartScreen> {
             colors: [Colors.black, Colors.blue, Colors.pink],
             sizes: ["S", "L", "XL"]),
         quantity: 6),
-    CartItem(
-        product: Product(
-            id: "f9w9ejf0whe",
-            code: 'kmwoj',
-            name: 'Áo thun Zix',
-            price: 299.000,
-            description:
-                'Chiếc áo thun nam này là sự kết hợp hoàn hảo giữa phong cách và thoải mái. Với chất liệu cotton cao cấp, áo thun này mang lại cảm giác mềm mại và thoáng mát cho người mặc trong mọi hoàn cảnh.'
-                ' Thiết kế cổ tròn cổ điển kết hợp cùng tay áo ngắn tạo nên sự thoải mái và dễ dàng kết hợp với nhiều loại trang phục khác nhau.',
-            image: 'https://bizweb.dktcdn.net/thumb/1024x1024/100/472/913/products/4-1687014666814.png?v=1687014674297',
-            category: 'Phụ Kiện',
-            rate: 2.0,
-            colors: [Colors.black, Colors.blue, Colors.pink],
-            sizes: ["M", "L", "XXL"]),
-        quantity: 4)
   ];
 
   @override
@@ -82,9 +67,11 @@ class _CartScreenState extends State<CartScreen> {
             onPressed: () {
               setState(() {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MainScreen()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MainScreen(),
+                  ),
+                );
               });
             },
             style: IconButton.styleFrom(
@@ -94,128 +81,130 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
       ),
+      bottomSheet: Container(
+        height: 330,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+        ),
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none),
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 5,
+                  horizontal: 15,
+                ),
+                filled: true,
+                fillColor: kcontentdcolor,
+                hintText: "Nhập mã giảm giá",
+                hintStyle: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey,
+                ),
+                suffixIcon: TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Áp dụng",
+                    style: TextStyle(
+                      color: kprimarycolor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Tạm tính",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+                Text(
+                  "${cartItems.length > 1 ? cartItems.map<double>((e) => e.quantity * e.product.price).reduce((value1, value2) => value1 + value2) : cartItems[0].quantity * cartItems[0].product.price}00 đ",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Tổng cộng",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+                Text(
+                  "${cartItems.length > 1 ? cartItems.map<double>((e) => e.quantity * e.product.price).reduce((value1, value2) => value1 + value2) : cartItems[0].quantity * cartItems[0].product.price}00 đ",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 60,
+            ),
+            Container(
+              height: 60,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: kprimarycolor,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              alignment: Alignment.center,
+              child: const Text(
+                "Thanh toán",
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: ListView.separated(
             padding: const EdgeInsets.all(15),
-            itemBuilder: (context, index) => Stack(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 85,
-                            height: 85,
-                            decoration: BoxDecoration(
-                              color: kcontentdcolor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child:
-                                Image.network(cartItems[index].product.image),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                cartItems[index].product.name,
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                cartItems[index].product.category,
-                                style: const TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "${cartItems[index].product.price}00 đ",
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      top: 5,
-                      right: 5,
-                      child: Column(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                cartItems.remove(cartItems[0]);
-                              });
-                            },
-                            icon: const Icon(
-                              Icons.delete_outline,
-                              color: Colors.red,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 20,
-                      right: 20,
-                      child: Container(
-                        width: 105,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: kcontentdcolor,
-                        ),
-                        child: Row(
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                setState(() {});
-                              },
-                              padding: const EdgeInsets.only(left: 2),
-                              icon: const Icon(
-                                Icons.remove,
-                                size: 14,
-                              ),
-                            ),
-                            Text(
-                              "${cartItems[index].quantity}",
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                setState(() {});
-                              },
-                              padding: const EdgeInsets.only(right: 5),
-                              icon: const Icon(
-                                Icons.add,
-                                size: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+            itemBuilder: (context, index) => ProductItemCart(
+                  onRemove: () {},
+                  onAdd: () {},
+                  cartItem: cartItems[index],
+                  removeItem: () {},
                 ),
             separatorBuilder: (context, index) => const SizedBox(
                   height: 20,

@@ -77,6 +77,7 @@ class ProductItemCart extends StatelessWidget {
           top: 5,
           right: 5,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               IconButton(
                 onPressed: removeItem(),
@@ -85,46 +86,47 @@ class ProductItemCart extends StatelessWidget {
                   color: Colors.red,
                 ),
               ),
+              Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  color: kcontentdcolor,
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: onRemove(),
+                      iconSize: 18,
+                      icon: const Icon(Icons.remove),
+                      color: Colors.black,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      cartItem.quantity.toString(),
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    IconButton(
+                      onPressed: onAdd(),
+                      iconSize: 18,
+                      icon: const Icon(Icons.add),
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+              ),
             ],
-          ),
-        ),
-        Positioned(
-          bottom: 20,
-          right: 20,
-          child: Container(
-            width: 105,
-            height: 35,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: kcontentdcolor,
-            ),
-            child: Row(
-              children: [
-                IconButton(
-                  onPressed: onRemove(),
-                  padding: const EdgeInsets.only(left: 2),
-                  icon: const Icon(
-                    Icons.remove,
-                    size: 14,
-                  ),
-                ),
-                Text(
-                  "${cartItem.quantity}",
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                IconButton(
-                  onPressed: onAdd(),
-                  padding: const EdgeInsets.only(right: 5),
-                  icon: const Icon(
-                    Icons.add,
-                    size: 14,
-                  ),
-                ),
-              ],
-            ),
           ),
         ),
       ],
