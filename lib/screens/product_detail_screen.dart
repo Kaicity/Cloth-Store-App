@@ -104,7 +104,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       height: 20,
                     ),
                     const Text(
-                      "Màu sắc",
+                      "Chọn màu: ",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -184,7 +184,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 color: currentSize == index
-                                    ? Colors.blue
+                                    ? kprimarycolor
                                     : kcontentdcolor,
                               ),
                               margin: const EdgeInsets.only(right: 10),

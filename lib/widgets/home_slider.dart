@@ -1,3 +1,4 @@
+import 'package:clothstore_mobile/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomeSlider extends StatelessWidget {
@@ -36,7 +37,7 @@ class HomeSlider extends StatelessWidget {
                   height: 200,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
                       //Su dung hinh anb tu Network Link , con su dung local dung thi AssetImage
                       image: NetworkImage(imageUrl),
@@ -64,7 +65,7 @@ class HomeSlider extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: currentSlide == index
-                        ? Colors.black
+                        ? kprimarycolor
                         : Colors.transparent,
                     border: Border.all(color: Colors.black),
                   ),

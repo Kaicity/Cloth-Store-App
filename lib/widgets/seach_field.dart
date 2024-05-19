@@ -12,8 +12,12 @@ class SeachField extends StatelessWidget {
       height: 55,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: kcontentdcolor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(30),
+        border: Border.all(
+          color: Colors.grey,
+          width: 1,
+        ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
       child: Row(

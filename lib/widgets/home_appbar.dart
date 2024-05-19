@@ -16,23 +16,16 @@ class HomeAppBar extends StatelessWidget {
           icon: const Icon(Icons.menu_open),
           style: IconButton.styleFrom(
             backgroundColor: kcontentdcolor,
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(10),
           ),
           iconSize: 30,
         ),
         IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const CartScreen(),
-              ),
-            );
-          },
-          icon: const Icon(Icons.shopping_cart_outlined),
+          onPressed: () {},
+          icon: const Icon(Icons.notifications),
           style: IconButton.styleFrom(
             backgroundColor: kcontentdcolor,
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(10),
           ),
           iconSize: 30,
         ),

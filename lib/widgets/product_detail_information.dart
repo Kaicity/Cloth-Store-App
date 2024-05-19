@@ -39,28 +39,26 @@ class ProductDetailInformation extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      width: 50,
-                      height: 22,
+                      width: 55,
+                      height: 30,
                       decoration: BoxDecoration(
-                        color: kprimarycolor,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
                         vertical: 2,
                       ),
                       child: Row(
                         children: [
                           const Icon(
                             Icons.star,
-                            size: 15,
+                            size: 20,
                             color: Colors.yellow,
                           ),
                           Text(
                             "${product.rate}",
                             style: const TextStyle(
-                              fontSize: 10,
-                              color: Colors.white,
+                              fontSize: 15,
+                              color: Colors.grey,
                             ),
                           ),
                         ],

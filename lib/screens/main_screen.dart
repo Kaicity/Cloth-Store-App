@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
     Scaffold(),
     Scaffold(),
     HomeScreen(),
-    Scaffold(),
+    CartScreen(),
     UserScreen(),
   ];
 
@@ -74,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                   currentTab = 3;
                 },
               ),
-              icon: const Icon(Icons.notifications_none_outlined),
+              icon: const Icon(Icons.shopping_cart_outlined),
               color: currentTab == 3 ? kprimarycolor : Colors.grey.shade400,
             ),
             IconButton(

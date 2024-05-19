@@ -17,7 +17,7 @@ class AddToCart extends StatelessWidget {
         height: 80,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          color: Colors.black,
+          color: kcontentdcolor,
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: 10,
@@ -41,7 +41,7 @@ class AddToCart extends StatelessWidget {
                     onPressed: onRemove,
                     iconSize: 18,
                     icon: const Icon(Icons.remove),
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                   const SizedBox(
                     width: 5,
@@ -49,7 +49,7 @@ class AddToCart extends StatelessWidget {
                   Text(
                     currentNumber.toString(),
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(
@@ -59,7 +59,7 @@ class AddToCart extends StatelessWidget {
                     onPressed: onAdd,
                     iconSize: 18,
                     icon: const Icon(Icons.add),
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ],
               ),

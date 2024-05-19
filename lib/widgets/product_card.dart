@@ -19,69 +19,84 @@ class ProductCard extends StatelessWidget {
           ),
         );
       },
-      child: Stack(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 250,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20), color: kcontentdcolor),
-            child: Column(
+          Expanded(
+            child: Stack(
               children: [
-                Image(
-                  image: NetworkImage(product.image),
-                  width: 100,
-                  height: 100,
+                Container(
+                  height: 250,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: kcontentdcolor,
+                  ),
+                  child: Image(
+                    width: double.infinity,
+                    image: NetworkImage(product.image),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                Text(
-                  product.name,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 14),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "${product.price}\0\0 \đ",
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 12),
-                    ),
-                    Row(
-                      children: List.generate(
-                        product.colors.length,
-                        (cindex) => Container(
-                          width: 15,
-                          height: 15,
-                          decoration: BoxDecoration(
-                              color: product.colors[cindex],
-                              shape: BoxShape.circle),
-                          margin: const EdgeInsets.only(right: 2),
-                        ),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 35,
+                      height: 35,
+                      decoration: BoxDecoration(
+                        color: kcontentdcolor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Icon(
+                        Icons.favorite_border,
+                        color: Colors.black,
+                        size: 18,
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
           ),
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                width: 25,
-                height: 25,
-                decoration: const BoxDecoration(
-                  color: kprimarycolor,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    bottomLeft: Radius.circular(10),
+          const SizedBox(height: 10), // Khoảng cách giữa hình ảnh và văn bản
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    product.name,
+                    style: const TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-                child: const Icon(
-                  Icons.favorite_border,
-                  color: Colors.white,
-                  size: 18,
-                ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        size: 20,
+                        color: Colors.yellow,
+                      ),
+                      Text(
+                        "${product.rate}",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              )),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              '${product.price}00 đ',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: Colors.black,
               ),
             ),
           ),
